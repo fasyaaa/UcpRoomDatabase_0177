@@ -2,7 +2,7 @@ package com.example.ucp2.ui.viewmodel.dokter
 
 import com.example.ucp2.data.entity.Dokter
 
-data class DkrUIState(
+data class FormErrorState(
     val idDkr: String? = null,
     val nama: String? = null,
     val spesialis: String? = null,
