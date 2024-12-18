@@ -10,7 +10,7 @@ import com.example.ucp2.data.entity.Jadwal
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface jadwalDao {
+interface JadwalDao {
     @Insert
     suspend fun insertJadwal(
         jadwal: Jadwal
