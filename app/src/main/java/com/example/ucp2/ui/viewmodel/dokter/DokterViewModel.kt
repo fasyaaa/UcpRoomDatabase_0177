@@ -2,6 +2,24 @@ package com.example.ucp2.ui.viewmodel.dokter
 
 import com.example.ucp2.data.entity.Dokter
 
+data class DkrUIState(
+    val idDkr: String? = null,
+    val nama: String? = null,
+    val spesialis: String? = null,
+    val klinik: String? = null,
+    val nohp: String? = null,
+    val jamkerja: String? = null
+){
+    fun isValid(): Boolean{
+        return idDkr == null &&
+                nama == null &&
+                spesialis == null &&
+                klinik == null &&
+                nohp == null &&
+                jamkerja == null
+    }
+}
+
 data class DokterEvent(
     val idDkr: String = "",
     val nama: String = "",
