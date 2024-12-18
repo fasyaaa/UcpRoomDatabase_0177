@@ -5,13 +5,12 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.ucp2.RsSejahteraApp
-import com.example.ucp2.ui.viewmodel.dokter.HomeDkrViewModel
 
 object PenyediaViewModel {
 
     val Factory = viewModelFactory {
         initializer {
-            HomeDkrViewModel(
+            HomeRsViewModel(
                 rsSejahtera().containerApp.repositoryDkr
             )
         }

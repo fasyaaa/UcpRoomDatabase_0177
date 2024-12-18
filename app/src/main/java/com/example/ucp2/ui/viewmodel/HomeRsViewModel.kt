@@ -1,4 +1,4 @@
-package com.example.ucp2.ui.viewmodel.dokter
+package com.example.ucp2.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class HomeDkrViewModel (
+class HomeRsViewModel (
     private val repositoryDkr: RepositoryDkr
 ): ViewModel(){
     val homeUiState: StateFlow<HomeUiState> = repositoryDkr
