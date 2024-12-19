@@ -5,17 +5,31 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.ucp2.RsSejahteraApp
+import com.example.ucp2.ui.viewmodel.dokter.DokterViewModel
+import com.example.ucp2.ui.viewmodel.jadwal.JadwalViewModel
 
 object PenyediaViewModel {
 
     val Factory = viewModelFactory {
         initializer {
+            DokterViewModel(
+                rsSejahteraApp().containerApp.repositoryDkr
+            )
+        }
+
+        initializer {
+            JadwalViewModel(
+                rsSejahteraApp().containerApp.repositoryJdw
+            )
+        }
+
+        initializer {
             HomeRsViewModel(
-                rsSejahtera().containerApp.repositoryDkr
+                rsSejahteraApp().containerApp.repositoryDkr
             )
         }
     }
 }
 
-fun CreationExtras.rsSejahtera(): RsSejahteraApp =
+fun CreationExtras.rsSejahteraApp(): RsSejahteraApp =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as RsSejahteraApp)
