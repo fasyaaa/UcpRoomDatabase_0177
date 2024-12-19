@@ -2,6 +2,12 @@ package com.example.ucp2.ui.viewmodel.dokter
 
 import com.example.ucp2.data.entity.Dokter
 
+data class DkrUIState(
+    val dokterEvent: DokterEvent = DokterEvent(),
+    val isEntryValid: FormErrorState = FormErrorState(),
+    val snackbarMessage: String? = null
+)
+
 data class FormErrorState(
     val idDkr: String? = null,
     val nama: String? = null,
