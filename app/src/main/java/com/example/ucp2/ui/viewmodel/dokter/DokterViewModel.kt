@@ -60,7 +60,13 @@ class DokterViewModel (private val repositoryDkr: RepositoryDkr): ViewModel(){
             )
         }
     }
+
+    fun resetSnackBarMessage() {
+        uiState = uiState.copy(snackbarMessage = null)
+
+    }
 }
+
 
 data class DkrUIState(
     val dokterEvent: DokterEvent = DokterEvent(),
