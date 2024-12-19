@@ -2,6 +2,15 @@ package com.example.ucp2.ui.viewmodel.jadwal
 
 import com.example.ucp2.data.entity.Jadwal
 
+data class FormErrorState(
+    val idJdw: String? = null,
+    val namDkr: String? = null,
+    val namPs: String? = null,
+    val noHp: String? = null,
+    val tglKon: String? = null,
+    val status: String? = null
+)
+
 data class JadwalEvent(
     val idJdw: String = "",
     val namDkr: String = "",
