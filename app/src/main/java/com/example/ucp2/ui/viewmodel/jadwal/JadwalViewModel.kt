@@ -2,6 +2,12 @@ package com.example.ucp2.ui.viewmodel.jadwal
 
 import com.example.ucp2.data.entity.Jadwal
 
+data class JdwUIState(
+    val jadwalEvent: JadwalEvent = JadwalEvent(),
+    val isEntryValid: FormErrorState = FormErrorState(),
+    val snacbarMessage: String? = null
+)
+
 data class FormErrorState(
     val idJdw: String? = null,
     val namDkr: String? = null,
