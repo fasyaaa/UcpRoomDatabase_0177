@@ -14,5 +14,7 @@ interface DokterDao {
     )
     @Query("SELECT * FROM dokter ORDER BY nama ASC")
     fun getAllDokter(): Flow<List<Dokter>>
+    @Query("SELECT * FROM dokter WHERE nama = :nama")
+    fun getNmDokter(nama: String): Flow<List<Dokter>>
 
 }
