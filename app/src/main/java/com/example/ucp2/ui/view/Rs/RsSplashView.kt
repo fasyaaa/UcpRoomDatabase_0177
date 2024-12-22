@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.example.ucp2.R
 
 @Composable
-fun SplashView(
+fun RsSplashView(
     onMulaiButton: () -> Unit
 ){
     Column (
@@ -53,7 +53,7 @@ fun SplashView(
             text = "Your Health\nOur Commitment",
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(16.dp)
-            )
+        )
         Spacer(modifier = Modifier.padding(16.dp))
         Button(
             onClick = {
