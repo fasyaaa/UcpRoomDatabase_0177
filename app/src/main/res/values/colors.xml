@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background">#FF001A6E</color>
+    <color name="button">#FF074799</color>
     <color name="specialis1">#FF543A14</color>
     <color name="specialis2">#FF66785F</color>
     <color name="specialis3">#FFEB5B00</color>
