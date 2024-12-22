@@ -75,7 +75,6 @@ data class DetailUiState(
 
 fun Jadwal.toDetailUiEvent() : JadwalEvent{
     return  JadwalEvent(
-        idJdw = idJadwal,
         namDkr = namaDokter,
         namPs = namaPasien,
         noHp = nohp,

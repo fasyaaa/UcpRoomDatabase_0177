@@ -39,7 +39,6 @@ class UpdateJdwViewModel (
         val event = updateUIState.jadwalEvent
         val isNoHpValid = event.noHp.matches(Regex("^[0-9]+$"))
         val errorState = FormErrorState(
-            idJdw = if(event.idJdw.isNotEmpty()) null else "Jadwal tidak boleh kosong",
             namDkr = if(event.namDkr.isNotEmpty()) null else "Nama Dokter tidak boleh kosong",
             namPs = if(event.namPs.isNotEmpty()) null else "Nama Pasien tidak boleh kosong",
             noHp = if (event.noHp.isNotEmpty()) {

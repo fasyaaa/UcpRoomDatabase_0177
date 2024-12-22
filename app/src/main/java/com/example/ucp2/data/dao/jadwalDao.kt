@@ -18,11 +18,11 @@ interface JadwalDao {
     @Update
     suspend fun updateJadwal(
         jadwal: Jadwal
-    ):Long
+    ):Int
     @Delete
     suspend fun deleteJadwal(
         jadwal: Jadwal
-    ):Long
+    ):Int
 
     @Query("SELECT * FROM jadwal ORDER BY tglKon ASC")
     fun getAllJadwal(): Flow<List<Jadwal>>

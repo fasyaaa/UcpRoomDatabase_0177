@@ -22,7 +22,6 @@ class JadwalViewModel (private val repositoryJdw: RepositoryJdw): ViewModel(){
         val event = uiState.jadwalEvent
         val isNoHpValid = event.noHp.matches(Regex("^[0-9]+$"))
         val errorState = FormErrorState(
-            idJdw = if(event.idJdw.isNotEmpty()) null else "Jadwal tidak boleh kosong",
             namDkr = if(event.namDkr.isNotEmpty()) null else "Nama Dokter tidak boleh kosong",
             namPs = if(event.namPs.isNotEmpty()) null else "Nama Pasien tidak boleh kosong",
             noHp = if (event.noHp.isNotEmpty()) {
@@ -69,7 +68,6 @@ data class JdwUIState(
 )
 
 data class FormErrorState(
-    val idJdw: String? = null,
     val namDkr: String? = null,
     val namPs: String? = null,
     val noHp: String? = null,
@@ -77,8 +75,7 @@ data class FormErrorState(
     val status: String? = null
 ){
     fun isValid(): Boolean {
-        return idJdw == null &&
-                namDkr == null &&
+        return namDkr == null &&
                 namPs == null &&
                 noHp == null &&
                 tglKon == null &&
@@ -87,7 +84,7 @@ data class FormErrorState(
 }
 
 data class JadwalEvent(
-    val idJdw: String = "",
+    val idJdw: Int = 0,
     val namDkr: String = "",
     val namPs: String = "",
     val noHp: String = "",
