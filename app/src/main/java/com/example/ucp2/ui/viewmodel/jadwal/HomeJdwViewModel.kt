@@ -1,9 +1,9 @@
-package com.example.ucp2.ui.viewmodel.dokter
+package com.example.ucp2.ui.viewmodel.jadwal
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ucp2.data.entity.Dokter
-import com.example.ucp2.repository.RepositoryDkr
+import com.example.ucp2.data.entity.Jadwal
+import com.example.ucp2.repository.RepositoryJdw
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -13,23 +13,24 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class HomeDkrViewModel (
-    private val repositoryDkr: RepositoryDkr
-): ViewModel(){
-    val homeUiState: StateFlow<HomeDkrUiState> = repositoryDkr
-        .getAllDkr()
+class HomeJdwViewModel(
+    private val repositoryJdw: RepositoryJdw
+) : ViewModel() {
+    val homeUiState: StateFlow<HomeJdwUiState> = repositoryJdw.getAllJdw()
         .filterNotNull()
         .map {
-            HomeDkrUiState(listDkr = it.toList(),
-                isLoading = false)
+            HomeJdwUiState(
+                listJdw = it.toList(),
+                isLoading = false,
+            )
         }
         .onStart {
-            emit(HomeDkrUiState(isLoading = true))
+            emit(HomeJdwUiState(isLoading = true))
             delay(900)
         }
         .catch {
             emit(
-                HomeDkrUiState(
+                HomeJdwUiState(
                     isLoading = false,
                     isError = true,
                     errorMessage = it.message ?: "Terjadi Kesalahan"
@@ -39,14 +40,14 @@ class HomeDkrViewModel (
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
-            initialValue = HomeDkrUiState(
-                isLoading = true
+            initialValue = HomeJdwUiState(
+                isLoading = true,
             )
         )
 }
 
-data class HomeDkrUiState(
-    val listDkr: List<Dokter> = listOf(),
+data class HomeJdwUiState(
+    val listJdw: List<Jadwal> = listOf(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val errorMessage: String = ""
