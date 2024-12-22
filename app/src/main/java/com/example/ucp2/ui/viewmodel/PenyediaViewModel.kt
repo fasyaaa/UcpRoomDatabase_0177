@@ -23,7 +23,8 @@ object PenyediaViewModel {
 
         initializer {
             JadwalViewModel(
-                rsSejahteraApp().containerApp.repositoryJdw
+                rsSejahteraApp().containerApp.repositoryJdw,
+                rsSejahteraApp().containerApp.repositoryDkr
             )
         }
 
