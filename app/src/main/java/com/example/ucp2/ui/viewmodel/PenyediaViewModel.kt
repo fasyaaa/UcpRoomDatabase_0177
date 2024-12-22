@@ -44,7 +44,9 @@ object PenyediaViewModel {
         initializer {
             UpdateJdwViewModel(
                 createSavedStateHandle(),
-                rsSejahteraApp().containerApp.repositoryJdw
+                rsSejahteraApp().containerApp.repositoryJdw,
+                rsSejahteraApp().containerApp.repositoryDkr
+
             )
         }
     }

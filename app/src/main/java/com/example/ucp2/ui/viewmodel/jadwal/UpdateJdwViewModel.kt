@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ucp2.data.entity.Jadwal
+import com.example.ucp2.repository.RepositoryDkr
 import com.example.ucp2.repository.RepositoryJdw
 import com.example.ucp2.ui.navigation.DestinasiUpdateJdw
 import kotlinx.coroutines.flow.filterNotNull
@@ -15,12 +16,23 @@ import kotlinx.coroutines.launch
 
 class UpdateJdwViewModel (
     savedStateHandle: SavedStateHandle,
-    private val repositoryJdw: RepositoryJdw
+    private val repositoryJdw: RepositoryJdw,
+    private val repositoryDkr: RepositoryDkr
 ): ViewModel(){
     var updateUIState by mutableStateOf(JdwUIState())
         private set
 
     private val _idJdw: String = checkNotNull(savedStateHandle[DestinasiUpdateJdw.idJdw])
+
+    var dokterList by mutableStateOf(listOf<String>())
+
+    fun getDokterList(){
+        viewModelScope.launch {
+            repositoryDkr.getAllDkr().collect { dokterEntities ->
+                dokterList = dokterEntities.map { it.nama }
+            }
+        }
+    }
 
     init {
         viewModelScope.launch {
@@ -28,8 +40,10 @@ class UpdateJdwViewModel (
                 .filterNotNull()
                 .first()
                 .toUIStateJdw()
+            getDokterList()
         }
     }
+
     fun updateState(jadwalEvent: JadwalEvent){
         updateUIState = updateUIState.copy(
             jadwalEvent = jadwalEvent
@@ -52,6 +66,7 @@ class UpdateJdwViewModel (
         updateUIState = updateUIState.copy(isEntryValid = errorState)
         return errorState.isValid()
     }
+
     fun updateData(){
         val currentEvent = updateUIState.jadwalEvent
 
