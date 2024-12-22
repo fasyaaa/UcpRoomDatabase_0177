@@ -7,6 +7,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.ucp2.RsSejahteraApp
 import com.example.ucp2.ui.viewmodel.dokter.DokterViewModel
+import com.example.ucp2.ui.viewmodel.dokter.HomeDkrViewModel
 import com.example.ucp2.ui.viewmodel.jadwal.DetailJdwViewModel
 import com.example.ucp2.ui.viewmodel.jadwal.JadwalViewModel
 import com.example.ucp2.ui.viewmodel.jadwal.UpdateJdwViewModel
