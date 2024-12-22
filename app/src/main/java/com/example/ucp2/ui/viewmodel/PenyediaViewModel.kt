@@ -27,7 +27,7 @@ object PenyediaViewModel {
         }
 
         initializer {
-            HomeRsViewModel(
+            HomeDkrViewModel(
                 rsSejahteraApp().containerApp.repositoryDkr
             )
         }
