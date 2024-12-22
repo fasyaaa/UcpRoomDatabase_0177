@@ -14,15 +14,15 @@ interface JadwalDao {
     @Insert
     suspend fun insertJadwal(
         jadwal: Jadwal
-    )
+    ):Long
     @Update
     suspend fun updateJadwal(
         jadwal: Jadwal
-    )
+    ):Long
     @Delete
     suspend fun deleteJadwal(
         jadwal: Jadwal
-    )
+    ):Long
 
     @Query("SELECT * FROM jadwal ORDER BY tglKon ASC")
     fun getAllJadwal(): Flow<List<Jadwal>>
