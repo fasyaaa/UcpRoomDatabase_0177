@@ -1,7 +1,5 @@
 package com.example.ucp2.ui.customwidget
 
-package com.example.pam7.ui.costumwidget
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
