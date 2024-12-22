@@ -19,3 +19,7 @@ object DestinasiUpdateJdw: AlamatNavigasi{
     const val idJdw = "idJadwal"
     val routesWithArg = "$route/{$idJdw}"
 }
+
+object DestinasiSplash: AlamatNavigasi{
+    override val route = "splash"
+}
