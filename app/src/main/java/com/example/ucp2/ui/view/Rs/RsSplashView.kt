@@ -2,10 +2,13 @@ package com.example.ucp2.ui.view.Rs
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -16,7 +19,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -31,13 +37,22 @@ import com.example.ucp2.R
 fun RsSplashView(
     onMulaiButton: () -> Unit
 ){
+    Image(
+            painter = painterResource(
+                id = R.drawable.splash
+            ),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            alpha = 0.8f,
+            modifier = Modifier.fillMaxSize()
+    )
     Column (
         modifier = Modifier
             .fillMaxSize()
             .background(
                 color = colorResource(
                     id = R.color.background
-                )
+                ).copy(alpha = 0.8f)
             ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -52,17 +67,18 @@ fun RsSplashView(
             modifier = Modifier
                 .padding(16.dp)
         )
-        Image(
-            painter = painterResource(
-                id = R.drawable.logo
-            ),
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
-                .size(300.dp)
-                .clip(CircleShape)
-                .background(color = colorResource(id = R.color.background))
-        )
+                .size(350.dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .size(300.dp)
+            )
+        }
         Text(
             text = "Your Health\nOur Commitment",
             textAlign = TextAlign.Center,
