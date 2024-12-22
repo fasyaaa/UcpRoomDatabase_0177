@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ucp2.data.entity.Jadwal
 import com.example.ucp2.repository.RepositoryJdw
 import com.example.ucp2.ui.navigation.DestinasiUpdateJdw
 import kotlinx.coroutines.flow.filterNotNull
@@ -81,3 +82,7 @@ class UpdateJdwViewModel (
         updateUIState = updateUIState.copy(snackbarMessage = null)
     }
 }
+
+fun Jadwal.toUIStateJdw() : JdwUIState = JdwUIState(
+    jadwalEvent = this.toDetailUiEvent()
+)
