@@ -60,7 +60,7 @@ fun SplashView(
                 onMulaiButton()
             }
         ) {
-            Text(text = "Mulai",
+            Text(text = "Start",
                 modifier = Modifier
                     .background(color = colorResource(id = R.color.button))
             )
