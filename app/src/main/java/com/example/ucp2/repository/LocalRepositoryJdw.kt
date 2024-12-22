@@ -17,11 +17,12 @@ class LocalRepositoryJdw(private val jadwalDao: JadwalDao): RepositoryJdw {
         jadwalDao.deleteJadwal(jadwal)
     }
 
-    override fun getAllDkr(): Flow<List<Jadwal>> {
+    override fun getAllJdw(): Flow<List<Jadwal>> {
         return (jadwalDao.getAllJadwal())
     }
 
-    override fun getMhs(idJdw: String): Flow<Jadwal> {
+    override fun getJdw(idJdw: String): Flow<Jadwal> {
         return (jadwalDao.getJadwal(idJdw))
     }
+
 }

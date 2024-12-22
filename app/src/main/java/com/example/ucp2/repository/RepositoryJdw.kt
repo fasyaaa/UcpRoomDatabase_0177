@@ -10,7 +10,7 @@ interface RepositoryJdw {
 
     suspend fun deleteJdw(jadwal: Jadwal)
 
-    fun getAllDkr(): Flow<List<Jadwal>>
+    fun getAllJdw(): Flow<List<Jadwal>>
 
-    fun getMhs(idJdw: String): Flow<Jadwal>
+    fun getJdw(idJdw: String): Flow<Jadwal>
 }
