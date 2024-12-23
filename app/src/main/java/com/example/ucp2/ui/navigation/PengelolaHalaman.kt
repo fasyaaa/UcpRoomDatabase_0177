@@ -3,13 +3,12 @@ package com.example.ucp2.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.example.ucp2.ui.view.Rs.HomeRsView
 import com.example.ucp2.ui.view.Rs.RsSplashView
+import com.example.ucp2.ui.view.dokter.HomeDkrView
+import com.example.ucp2.ui.view.dokter.InsertDkrView
 
 @Composable
 fun PengelolaHalaman(
@@ -29,9 +28,16 @@ fun PengelolaHalaman(
             })
         }
         composable(route = DestinasiHome.route) {
-            HomeRsView(
-                onClickDkr = {navController.navigate(DestinasiHomeDkr.route)},
+            HomeDkrView(
+                onClickDkr = {navController.navigate(DestinasiAddDkr.route)},
                 onClickJdw = {navController.navigate(DestinasiHomeJdw.route)})
+        }
+        composable(route = DestinasiAddDkr.route){
+            InsertDkrView(
+                onBack = {navController.popBackStack()},
+                onNavigate = {navController.popBackStack()},
+                modifier = modifier
+            )
         }
     }
 }
