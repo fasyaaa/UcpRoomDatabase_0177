@@ -9,7 +9,7 @@ import com.example.ucp2.data.entity.Dokter
 import com.example.ucp2.repository.RepositoryDkr
 import kotlinx.coroutines.launch
 
-class DokterViewModel (private val repositoryDkr: RepositoryDkr): ViewModel(){
+class AddDokterViewModel (private val repositoryDkr: RepositoryDkr): ViewModel(){
     var uiState by mutableStateOf(DkrUIState())
 
     fun updateState(dokterEvent: DokterEvent){

@@ -8,10 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.ucp2.data.entity.Jadwal
 import com.example.ucp2.repository.RepositoryDkr
 import com.example.ucp2.repository.RepositoryJdw
-import com.example.ucp2.ui.viewmodel.dokter.DkrUIState
 import kotlinx.coroutines.launch
 
-class JadwalViewModel (private val repositoryJdw: RepositoryJdw, private val repositoryDkr: RepositoryDkr): ViewModel(){
+class AddJadwalViewModel (private val repositoryJdw: RepositoryJdw, private val repositoryDkr: RepositoryDkr): ViewModel(){
     var uiStateJdwl by mutableStateOf(JdwUIState())
     var uiStateDk by mutableStateOf(listOf<String>())
 
