@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.ucp2.ui.view.Rs.HomeRsView
 import com.example.ucp2.ui.view.Rs.RsSplashView
 
 @Composable
@@ -20,12 +21,17 @@ fun PengelolaHalaman(
         startDestination = DestinasiSplash.route
     )
     {
-        composable(route = DestinasiSplash.route){
-            RsSplashView(onMulaiButton =  {
+        composable(route = DestinasiSplash.route) {
+            RsSplashView(onMulaiButton = {
                 navController.navigate(
                     DestinasiHome.route
                 )
             })
+        }
+        composable(route = DestinasiHome.route) {
+            HomeRsView(
+                onClickDkr = {navController.navigate(DestinasiHomeDkr.route)},
+                onClickJdw = {navController.navigate(DestinasiHomeJdw.route)})
         }
     }
 }
