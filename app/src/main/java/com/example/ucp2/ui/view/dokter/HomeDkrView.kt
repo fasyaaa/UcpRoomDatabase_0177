@@ -63,10 +63,10 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun HomeDkrView(
+    modifier: Modifier = Modifier,
     viewModel: HomeDkrViewModel = viewModel(factory = PenyediaViewModel.Factory),
     onClickDkr: () -> Unit = {},
-    onClickJdw: () -> Unit = {},
-    modifier: Modifier = Modifier
+    onClickJdw: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -86,7 +86,7 @@ fun HomeDkrView(
 
         val homeUiState by viewModel.homeUiState.collectAsState()
         Spacer(modifier = Modifier.padding(8.dp))
-        BodyHomeMhsView(
+        BodyHomeDkrView(
             homeUiState = homeUiState,
             modifier = Modifier.padding(innerPadding)
         )
@@ -95,7 +95,7 @@ fun HomeDkrView(
 
 
 @Composable
-fun BodyHomeMhsView(
+fun BodyHomeDkrView(
     homeUiState: HomeDkrUiState,
     modifier: Modifier = Modifier
 ) {
@@ -126,10 +126,10 @@ fun BodyHomeMhsView(
                 contentAlignment = Alignment.Center
             ){
                 Text(
-                    text = "Tidak ada data Dokter",
-                    fontSize = 18.sp,
+                    text = "Tidak ada data",
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = modifier.padding(16.dp)
+                    modifier = modifier.padding(18.dp)
                 )
             }
         }
