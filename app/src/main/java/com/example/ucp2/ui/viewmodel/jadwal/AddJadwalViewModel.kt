@@ -1,26 +1,26 @@
 package com.example.ucp2.ui.viewmodel.jadwal
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ucp2.data.entity.Dokter
 import com.example.ucp2.data.entity.Jadwal
 import com.example.ucp2.repository.RepositoryDkr
 import com.example.ucp2.repository.RepositoryJdw
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class AddJadwalViewModel (private val repositoryJdw: RepositoryJdw, private val repositoryDkr: RepositoryDkr): ViewModel(){
     var uiStateJdwl by mutableStateOf(JdwUIState())
-    var uiStateDk by mutableStateOf(listOf<String>())
 
-    fun getDkrList(){
-        viewModelScope.launch {
-            repositoryDkr.getAllDkr().collect { dokterEntities ->
-                uiStateDk = dokterEntities.map { it.nama }
-            }
-        }
-    }
+    val dokterListFlow = repositoryDkr.getAllDkr()
+        .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
 
     fun updateState(jadwalEvent: JadwalEvent){
         uiStateJdwl = uiStateJdwl.copy(
@@ -31,7 +31,7 @@ class AddJadwalViewModel (private val repositoryJdw: RepositoryJdw, private val 
     private fun validateField(): Boolean{
         val event = uiStateJdwl.jadwalEvent
         val isNoHpValid = event.noHp.matches(Regex("^[0-9]+$"))
-        val errorState = FormErrorState(
+        val errorState = FormErrorStateJdwl(
             namDkr = if(event.namDkr.isNotEmpty()) null else "Nama Dokter tidak boleh kosong",
             namPs = if(event.namPs.isNotEmpty()) null else "Nama Pasien tidak boleh kosong",
             noHp = if (event.noHp.isNotEmpty()) {
@@ -55,7 +55,7 @@ class AddJadwalViewModel (private val repositoryJdw: RepositoryJdw, private val 
                     uiStateJdwl = uiStateJdwl.copy(
                         snackbarMessage = "Data berhasil disimpan",
                         jadwalEvent = JadwalEvent(),
-                        isEntryValid = FormErrorState()
+                        isEntryValid = FormErrorStateJdwl()
                     )
                 } catch (e: Exception) {
                     uiStateJdwl = uiStateJdwl.copy(
@@ -69,7 +69,7 @@ class AddJadwalViewModel (private val repositoryJdw: RepositoryJdw, private val 
             )
         }
     }
-    fun resetSnackBarMessageMK() {
+    fun resetSnackBarMessageJdwl() {
         uiStateJdwl = uiStateJdwl.copy(
             snackbarMessage = null
         )
@@ -79,11 +79,11 @@ class AddJadwalViewModel (private val repositoryJdw: RepositoryJdw, private val 
 
 data class JdwUIState(
     val jadwalEvent: JadwalEvent = JadwalEvent(),
-    val isEntryValid: FormErrorState = FormErrorState(),
-    val snackbarMessage: String? = null
+    val isEntryValid: FormErrorStateJdwl = FormErrorStateJdwl(),
+    val snackbarMessage: String? = null,
 )
 
-data class FormErrorState(
+data class FormErrorStateJdwl(
     val namDkr: String? = null,
     val namPs: String? = null,
     val noHp: String? = null,
