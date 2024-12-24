@@ -52,7 +52,7 @@ class UpdateJdwViewModel (
     fun validateFields(): Boolean{
         val event = updateUIState.jadwalEvent
         val isNoHpValid = event.noHp.matches(Regex("^[0-9]+$"))
-        val errorState = FormErrorState(
+        val errorState = FormErrorStateJdwl(
             namDkr = if(event.namDkr.isNotEmpty()) null else "Nama Dokter tidak boleh kosong",
             namPs = if(event.namPs.isNotEmpty()) null else "Nama Pasien tidak boleh kosong",
             noHp = if (event.noHp.isNotEmpty()) {
@@ -77,7 +77,7 @@ class UpdateJdwViewModel (
                     updateUIState = updateUIState.copy(
                         snackbarMessage = "Data berhasil diupdate",
                         jadwalEvent = JadwalEvent(),
-                        isEntryValid = FormErrorState()
+                        isEntryValid = FormErrorStateJdwl()
                     )
                     println("snackBarMessage diatur: ${updateUIState.snackbarMessage}")
                 } catch (e: Exception) {
