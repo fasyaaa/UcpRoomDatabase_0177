@@ -9,11 +9,15 @@ object DestinasiHome: AlamatNavigasi{
 }
 
 object DestinasiAddDkr: AlamatNavigasi{
-    override val route = "homeDkr"
+    override val route = "addDkr"
 }
 
 object DestinasiHomeJdw: AlamatNavigasi{
     override val route = "homeJdw"
+}
+
+object DestinasiAddJdw: AlamatNavigasi{
+    override val route = "addJdw"
 }
 
 object DestinasiDetailJdw: AlamatNavigasi{
