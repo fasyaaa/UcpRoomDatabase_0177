@@ -14,6 +14,7 @@ import com.example.ucp2.ui.view.dokter.InsertDkrView
 import com.example.ucp2.ui.view.jadwal.DetailJdwView
 import com.example.ucp2.ui.view.jadwal.HomeJdwView
 import com.example.ucp2.ui.view.jadwal.InsertJdwView
+import com.example.ucp2.ui.view.jadwal.UpdateJdwView
 
 @Composable
 fun PengelolaHalaman(
@@ -80,6 +81,21 @@ fun PengelolaHalaman(
                 )
             }
         }
-
+        composable(
+            DestinasiUpdateJdw.routesWithArg,
+            arguments = listOf(
+                navArgument(DestinasiUpdateJdw.idJdw) {
+                    type = NavType.StringType
+                }
+            )
+        ) {
+            UpdateJdwView(
+                onNavigate = {
+                    navController.popBackStack()
+                },
+                onBack = {navController.popBackStack()},
+                modifier = modifier
+            )
+        }
     }
 }
