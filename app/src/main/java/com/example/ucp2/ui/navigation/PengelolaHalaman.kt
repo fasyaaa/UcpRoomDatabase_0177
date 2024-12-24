@@ -3,12 +3,15 @@ package com.example.ucp2.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.ucp2.ui.view.Rs.RsSplashView
 import com.example.ucp2.ui.view.dokter.HomeDkrView
 import com.example.ucp2.ui.view.dokter.InsertDkrView
+import com.example.ucp2.ui.view.jadwal.DetailJdwView
 import com.example.ucp2.ui.view.jadwal.HomeJdwView
 import com.example.ucp2.ui.view.jadwal.InsertJdwView
 
@@ -60,5 +63,23 @@ fun PengelolaHalaman(
                 modifier = modifier
             )
         }
+        composable(
+            DestinasiDetailJdw.routesWithArg,
+            arguments = listOf(
+                navArgument(DestinasiDetailJdw.idJdw) {
+                    type = NavType.StringType
+                }
+            )
+        ) {
+            val idJdw = it.arguments?.getString(DestinasiDetailJdw.idJdw)
+            idJdw?.let { id ->
+                DetailJdwView(
+                    onBack = { navController.popBackStack() },
+                    onEditClick = { navController.navigate("${DestinasiUpdateJdw.route}/$id") },
+                    onDeleteClick = { navController.popBackStack() }
+                )
+            }
+        }
+
     }
 }

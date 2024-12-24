@@ -57,14 +57,14 @@ fun HomeJdwView(
     modifier: Modifier,
     viewModel: HomeJdwViewModel = viewModel(factory = PenyediaViewModel.Factory),
     onBack: ()-> Unit,
-    onAddJdwl: (String)-> Unit,
+    onAddJdwl: ()-> Unit,
     onClickDtlJdw: (String) -> Unit
 ){
     Scaffold(
         topBar = {
             TopAppBar2(
                 onQuit = onBack,
-                onInsJdw = {onAddJdwl("Jadwal Konsultasi Baru")},
+                onInsJdw = {onAddJdwl()},
                 add1 = "Done",
                 add2 = "Reservasi",
                 showBackButton = false,
@@ -81,7 +81,7 @@ fun HomeJdwView(
         BodyHomeJdwView (
             homeUiState = homeUiJadwalState,
             onClick = {
-                onAddJdwl(it)
+                idJdw -> onClickDtlJdw(idJdw)
             },
             modifier = Modifier.padding(innerPadding)
         )
@@ -132,9 +132,9 @@ fun BodyHomeJdwView(
         else -> {
             ListJadwal(
                 listJadwal = homeUiState.listJdw,
-                onClick = {
-                    onClick(it)
-                    println(it)
+                onClick = { idJdw ->
+                    println("Navigasi ke detail: $idJdw")
+                    onClick(idJdw)
                 },
                 modifier = modifier
             )
