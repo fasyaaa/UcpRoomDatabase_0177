@@ -9,11 +9,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.ucp2.ui.view.Rs.RsSplashView
 import com.example.ucp2.ui.view.dokter.HomeDkrView
 import com.example.ucp2.ui.view.dokter.InsertDkrView
+import com.example.ucp2.ui.view.jadwal.HomeJdwView
+import com.example.ucp2.ui.view.jadwal.InsertJdwView
 
 @Composable
 fun PengelolaHalaman(
-    navController: NavHostController = rememberNavController(),
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
 ) {
     NavHost(
         navController = navController,
@@ -34,6 +36,25 @@ fun PengelolaHalaman(
         }
         composable(route = DestinasiAddDkr.route){
             InsertDkrView(
+                onBack = {navController.popBackStack()},
+                onNavigate = {navController.popBackStack()},
+                modifier = modifier
+            )
+        }
+        composable(route = DestinasiHomeJdw.route){
+            HomeJdwView(
+                onBack = {navController.popBackStack()},
+                onAddJdwl = {navController.navigate(DestinasiAddJdw.route)},
+                onClickDtlJdw = { idJdw ->
+                    navController.navigate("${DestinasiDetailJdw.route}/$idJdw")
+                    println(
+                        "PengelolaHalaman: idJdw =  $idJdw"
+                    )},
+                modifier = modifier
+            )
+        }
+        composable(route = DestinasiAddJdw.route){
+            InsertJdwView(
                 onBack = {navController.popBackStack()},
                 onNavigate = {navController.popBackStack()},
                 modifier = modifier
