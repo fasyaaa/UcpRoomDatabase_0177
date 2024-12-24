@@ -54,7 +54,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucp2.R
 import com.example.ucp2.data.entity.Dokter
-import com.example.ucp2.ui.customwidget.TopAppBarHome
+import com.example.ucp2.ui.customwidget.TopAppBar
 import com.example.ucp2.ui.viewmodel.PenyediaViewModel
 import com.example.ucp2.ui.viewmodel.dokter.HomeDkrUiState
 import com.example.ucp2.ui.viewmodel.dokter.HomeDkrViewModel
@@ -70,7 +70,7 @@ fun HomeDkrView(
 ) {
     Scaffold(
         topBar = {
-            TopAppBarHome(
+            TopAppBar(
                 title = "Sejahtera\nHospital",
                 onAddDtr = onClickDkr,
                 onAddJdw = onClickJdw,

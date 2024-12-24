@@ -82,7 +82,7 @@ fun TopAppBarCst(
 }
 
 @Composable
-fun TopAppBarHome(
+fun TopAppBar(
     onKembali: () -> Unit,
     showProfile: Boolean = true,
     showBackButton: Boolean = true,
